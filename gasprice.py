@@ -18,6 +18,6 @@ def get_gas_price():
       f.write(json.dumps(obj['data']) + '\n')
 
 if __name__ == "__main__":
-    for i in range(5): # Run for 5 minutes
+    for i in range(15*4): # Run for 15 minutes
       get_gas_price()
-      time.sleep(60) # sleep for 60 seconds
+      time.sleep(15) # sleep for 15 seconds
