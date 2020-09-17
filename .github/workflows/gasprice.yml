@@ -12,11 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v1
+      - uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.8"
 
       - name: Install dependencies
         run: |
@@ -34,7 +32,7 @@ jobs:
           git commit -m "Added new data by Github Action" -a
 
       - name: Push changes
-        uses: ad-m/github-push-action@v0.5.0
+        uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.S1 }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
