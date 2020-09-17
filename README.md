@@ -1,3 +1,3 @@
 # GasPrice
 
-Retrieve ETH gas price from gasnow.org per minute.
+Retrieve ETH gas price from [gasnow.org](https://www.gasnow.org/) per 15s.
