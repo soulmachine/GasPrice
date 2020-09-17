@@ -1,4 +1,7 @@
 import json
+import os
+import time
+from datetime import datetime, timezone
 
 import requests
 
@@ -11,12 +14,10 @@ def get_gas_price():
   response = requests.get('https://www.gasnow.org/api/v3/gas/price?utm_source=soulmachine', headers=headers)
   obj = response.json()
   if obj['code'] == 200:
-    return obj['data']
-  else:
-    return None
+    with open(os.path.join('data', datetime.now(timezone.utc).strftime("%Y-%m") + ".json"), "a") as f:
+      f.write(json.dumps(obj['data']) + '\n')
 
 if __name__ == "__main__":
-    data = get_gas_price()
-    if data is not None:
-      with open("gasprice.json", "a") as f:
-        f.write(json.dumps(data) + '\n')
+    for i in range(5): # Run for 5 minutes
+      get_gas_price()
+      time.sleep(60) # sleep for 60 seconds
