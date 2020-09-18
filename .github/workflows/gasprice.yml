@@ -33,5 +33,5 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.MY_ACTION_SECRET }}
+          github_token: ${{ secrets.MY_PAT }}
           force: true
