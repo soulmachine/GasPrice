@@ -17,13 +17,13 @@ headers = {
 
 
 def get_gas_price():
-  response = requests.get('https://www.gasnow.org/api/v3/gas/price?utm_source=soulmachine', headers=headers)
   try:
+    response = requests.get('https://www.gasnow.org/api/v3/gas/price?utm_source=soulmachine', headers=headers)
     obj = response.json()
     if obj['code'] == 200:
       with open(os.path.join('data', datetime.now(timezone.utc).strftime("%Y-%m") + ".json"), "a") as f:
         f.write(json.dumps(obj['data']) + '\n')
-  except JSONDecodeError as ex:
+  except Exception as ex:
     print(ex)
     print(response.text)
 
