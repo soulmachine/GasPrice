@@ -25,7 +25,6 @@ def get_gas_price():
         f.write(json.dumps(obj['data']) + '\n')
   except Exception as ex:
     print(ex)
-    print(response.text)
 
 if __name__ == "__main__":
     for i in range(15*4): # Run for 15 minutes
